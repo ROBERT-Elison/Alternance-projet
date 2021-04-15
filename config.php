@@ -1,18 +1,11 @@
-
 <?php
-/* parametre par default (user 'root' with no password) */
-define('DB_SERVER', 'phpmyadmin');
-define('DB_USERNAME', 'Simplon974');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'Astrocoffee');
- 
-/*connexion a la basedone avec MySQL */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
+try{
+    // Connexion à la bdd
+    $db = new PDO('mysql:host=localhost;dbname=Astrocoffee', 'phpmyadmin','Simplon974');
+    $db->exec('SET NAMES "UTF8"');
+} catch (PDOException $e){
+    echo 'Erreur mauvaise connexion a la Base de donnée: '. $e->getMessage();
+    die();
 }
 ?>
-
     
